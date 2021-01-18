@@ -85,7 +85,7 @@ function parseBorderWidth(bar, maxW, maxH) {
 function parseBorderRadius(bar, maxW, maxH) {
 	const value = bar.options.borderRadius;
   // const o = toTRBLCorners(value);
-  
+  // use precentage value for border radius
   const o = percetnToPx(value, maxW)
 	const maxR = Math.min(maxW, maxH);
 	const skip = parseBorderSkipped(bar);
