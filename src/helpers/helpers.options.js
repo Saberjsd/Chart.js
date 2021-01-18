@@ -93,6 +93,26 @@ export function toTRBLCorners(value) {
 	};
 }
 
+export function percetnToPx(value,maxW){
+  let tl, tr, bl, br;
+
+	if (isObject(value)) {
+		tl = maxW * value.topLeft;
+		tr = maxW * value.topRight;
+		bl = maxW * value.bottomLeft;
+		br = maxW * value.bottomRight;
+	} else {
+		tl = tr = bl = br = maxW * value;
+	}
+
+	return {
+		topLeft: tl,
+		topRight: tr,
+		bottomLeft: bl,
+		bottomRight: br
+	};
+}
+
 /**
  * Converts the given value into a padding object with pre-computed width/height.
  * @param {number|object} value - If a number, set the value to all TRBL component,
