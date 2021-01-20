@@ -275,7 +275,10 @@ export class Legend extends Element {
 			ctx.lineWidth = lineWidth;
 			ctx.strokeStyle = valueOrDefault(legendItem.strokeStyle, defaultColor);
 
-			ctx.setLineDash(valueOrDefault(legendItem.lineDash, []));
+      // ctx.setLineDash(valueOrDefault(legendItem.lineDash, []));
+      let tempDash = valueOrDefault(legendItem.lineDash, [])
+      // 需求：borderDash与borderWidth成生比
+      ctx.setLineDash(tempDash.map(m=>m * lineWidth));
 
 			if (labelOpts.usePointStyle) {
 				// Recalculate x and y for drawPoint() because its expecting

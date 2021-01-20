@@ -9354,7 +9354,8 @@ class Legend extends Element {
 			ctx.lineJoin = valueOrDefault(legendItem.lineJoin, 'miter');
 			ctx.lineWidth = lineWidth;
 			ctx.strokeStyle = valueOrDefault(legendItem.strokeStyle, defaultColor);
-			ctx.setLineDash(valueOrDefault(legendItem.lineDash, []));
+      let tempDash = valueOrDefault(legendItem.lineDash, []);
+      ctx.setLineDash(tempDash.map(m=>m * lineWidth));
 			if (labelOpts.usePointStyle) {
 				const drawOptions = {
 					radius: boxWidth * Math.SQRT2 / 2,
