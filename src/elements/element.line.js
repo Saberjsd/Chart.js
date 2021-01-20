@@ -10,7 +10,11 @@ import {_updateBezierControlPoints} from '../helpers/helpers.curve';
 
 function setStyle(ctx, vm) {
 	ctx.lineCap = vm.borderCapStyle;
-	ctx.setLineDash(vm.borderDash);
+  // ctx.setLineDash(vm.borderDash);
+  // 需求：borderDash与borderWidth成生比
+  if(Array.isArray(vm.borderDash)){
+    ctx.setLineDash(vm.borderDash.map(m=>m * vm.borderWidth || 1));
+  }
 	ctx.lineDashOffset = vm.borderDashOffset;
 	ctx.lineJoin = vm.borderJoinStyle;
 	ctx.lineWidth = vm.borderWidth;
