@@ -4832,6 +4832,9 @@ class Scale extends Element {
 		let i, ilen;
 		if (gridLines.display) {
 			for (i = 0, ilen = items.length; i < ilen; ++i) {
+        if(gridLines.skipFirst && i==0){
+          continue;
+        }
 				const item = items[i];
 				const {color, tickColor, tickWidth, width} = item;
 				if (width && color && gridLines.drawOnChartArea) {

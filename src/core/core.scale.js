@@ -1528,6 +1528,10 @@ export default class Scale extends Element {
 
 		if (gridLines.display) {
 			for (i = 0, ilen = items.length; i < ilen; ++i) {
+        // 新增的自定义属性"skipFirst"，是否不绘制第一轴线，避免虚线盖在实线上
+        if(gridLines.skipFirst && i==0){
+          continue;
+        }
 				const item = items[i];
 				const {color, tickColor, tickWidth, width} = item;
 
