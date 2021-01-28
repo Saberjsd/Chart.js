@@ -7505,7 +7505,7 @@ DoughnutController.defaults = {
 								text: label,
 								fillStyle: style.backgroundColor,
 								strokeStyle: style.borderColor,
-								lineWidth: style.borderWidth,
+								lineWidth: 0,
 								hidden: !chart.getDataVisibility(i),
 								index: i
 							};
