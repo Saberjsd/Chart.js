@@ -371,7 +371,7 @@ DoughnutController.defaults = {
 								text: label,
 								fillStyle: style.backgroundColor,
 								strokeStyle: style.borderColor,
-								lineWidth: style.borderWidth,
+								lineWidth: 0,
 								hidden: !chart.getDataVisibility(i),
 
 								// Extra data used for toggling the correct item
