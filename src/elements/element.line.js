@@ -363,20 +363,17 @@ export default class LineElement extends Element {
 			return;
 		}
 
-		ctx.save();
+    ctx.save();
 
 		setStyle(ctx, options);
 
-		let path = me._path;
-		if (!path) {
-			path = me._path = new Path2D();
-			if (me.path(path, start, count)) {
-				path.closePath();
-			}
+		ctx.beginPath();
+
+		if (this.path(ctx, start, count)) {
+			ctx.closePath();
 		}
 
-		ctx.stroke(path);
-
+		ctx.stroke();
 		ctx.restore();
 
 		if (me.animated) {
