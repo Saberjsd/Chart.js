@@ -93,16 +93,16 @@ export function toTRBLCorners(value) {
 	};
 }
 
-export function percetnToPx(value,maxW){
-  let tl, tr, bl, br;
+export function percentageToPx(value, basePx) {
+	let tl, tr, bl, br;
 
 	if (isObject(value)) {
-		tl = maxW * value.topLeft;
-		tr = maxW * value.topRight;
-		bl = maxW * value.bottomLeft;
-		br = maxW * value.bottomRight;
+		tl = basePx * value.topLeft;
+		tr = basePx * value.topRight;
+		bl = basePx * value.bottomLeft;
+		br = basePx * value.bottomRight;
 	} else {
-		tl = tr = bl = br = maxW * value;
+		tl = tr = bl = br = basePx * value;
 	}
 
 	return {
