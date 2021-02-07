@@ -903,15 +903,15 @@ function toTRBLCorners(value) {
 		bottomRight: br
 	};
 }
-function percetnToPx(value,maxW){
-  let tl, tr, bl, br;
+function percentageToPx(value, basePx) {
+	let tl, tr, bl, br;
 	if (isObject(value)) {
-		tl = maxW * value.topLeft;
-		tr = maxW * value.topRight;
-		bl = maxW * value.bottomLeft;
-		br = maxW * value.bottomRight;
+		tl = basePx * value.topLeft;
+		tr = basePx * value.topRight;
+		bl = basePx * value.bottomLeft;
+		br = basePx * value.bottomRight;
 	} else {
-		tl = tr = bl = br = maxW * value;
+		tl = tr = bl = br = basePx * value;
 	}
 	return {
 		topLeft: tl,
@@ -2170,4 +2170,4 @@ function _computeSegments(line) {
 	return solidSegments(points, start, max, completeLoop);
 }
 
-export { _elementsEqual as $, _isPointInArea as A, _rlookupByKey as B, toPadding as C, each as D, getMaximumSize as E, _getParentNode as F, readUsedSize as G, HALF_PI as H, throttled as I, supportsEventListenerOptions as J, log10 as K, finiteOrDefault as L, isNumberFinite as M, callback as N, toDegrees as O, PI as P, _measureText as Q, _int16Range as R, _alignPixel as S, TAU as T, renderText as U, toFont as V, _factorize as W, uid as X, retinaScale as Y, clearCanvas as Z, _capitalize as _, resolve as a, getAngleFromPoint as a0, _angleBetween as a1, _updateBezierControlPoints as a2, _computeSegments as a3, _boundSegments as a4, _steppedInterpolation as a5, _bezierInterpolation as a6, _pointInLine as a7, _steppedLineTo as a8, _bezierCurveTo as a9, toLineHeight as aA, toTRBLCorners as aB, PITAU as aC, INFINITY as aD, RAD_PER_DEG as aE, QUARTER_PI as aF, TWO_THIRDS_PI as aG, _angleDiff as aH, drawPoint as aa, toTRBL as ab, percetnToPx as ac, _normalizeAngle as ad, _boundSegment as ae, getRtlAdapter as af, _alignStartEnd as ag, overrideTextDirection as ah, restoreTextDirection as ai, _toLeftRightCenter as aj, distanceBetweenPoints as ak, toFontString as al, _setMinAndMaxByKey as am, _decimalPlaces as an, almostEquals as ao, almostWhole as ap, _longestText as aq, _filterBetween as ar, _lookup as as, fontString as at, clone as au, _mergerIf as av, _deprecated as aw, splineCurve as ax, splineCurveMonotone as ay, getStyle as az, isArray as b, color as c, defaults as d, effects as e, resolveObjectKey as f, getHoverColor as g, mergeIf as h, isObject as i, _merger as j, isNullOrUndef as k, listenArrayEvents as l, merge as m, noop as n, clipArea as o, unclipArea as p, _arrayUnique as q, requestAnimFrame as r, sign as s, toRadians as t, unlistenArrayEvents as u, valueOrDefault as v, isNumber as w, _limitValue as x, _lookupByKey as y, getRelativePosition as z };
+export { _elementsEqual as $, _isPointInArea as A, _rlookupByKey as B, toPadding as C, each as D, getMaximumSize as E, _getParentNode as F, readUsedSize as G, HALF_PI as H, throttled as I, supportsEventListenerOptions as J, log10 as K, finiteOrDefault as L, isNumberFinite as M, callback as N, toDegrees as O, PI as P, _measureText as Q, _int16Range as R, _alignPixel as S, TAU as T, renderText as U, toFont as V, _factorize as W, uid as X, retinaScale as Y, clearCanvas as Z, _capitalize as _, resolve as a, getAngleFromPoint as a0, _angleBetween as a1, _updateBezierControlPoints as a2, _computeSegments as a3, _boundSegments as a4, _steppedInterpolation as a5, _bezierInterpolation as a6, _pointInLine as a7, _steppedLineTo as a8, _bezierCurveTo as a9, getStyle as aA, toLineHeight as aB, PITAU as aC, INFINITY as aD, RAD_PER_DEG as aE, QUARTER_PI as aF, TWO_THIRDS_PI as aG, _angleDiff as aH, drawPoint as aa, toTRBL as ab, percentageToPx as ac, toTRBLCorners as ad, _normalizeAngle as ae, _boundSegment as af, getRtlAdapter as ag, _alignStartEnd as ah, overrideTextDirection as ai, restoreTextDirection as aj, _toLeftRightCenter as ak, distanceBetweenPoints as al, toFontString as am, _setMinAndMaxByKey as an, _decimalPlaces as ao, almostEquals as ap, almostWhole as aq, _longestText as ar, _filterBetween as as, _lookup as at, fontString as au, clone as av, _mergerIf as aw, _deprecated as ax, splineCurve as ay, splineCurveMonotone as az, isArray as b, color as c, defaults as d, effects as e, resolveObjectKey as f, getHoverColor as g, mergeIf as h, isObject as i, _merger as j, isNullOrUndef as k, listenArrayEvents as l, merge as m, noop as n, clipArea as o, unclipArea as p, _arrayUnique as q, requestAnimFrame as r, sign as s, toRadians as t, unlistenArrayEvents as u, valueOrDefault as v, isNumber as w, _limitValue as x, _lookupByKey as y, getRelativePosition as z };

@@ -1294,15 +1294,15 @@ function toTRBLCorners(value) {
 		bottomRight: br
 	};
 }
-function percetnToPx(value,maxW){
-  let tl, tr, bl, br;
+function percentageToPx(value, basePx) {
+	let tl, tr, bl, br;
 	if (isObject(value)) {
-		tl = maxW * value.topLeft;
-		tr = maxW * value.topRight;
-		bl = maxW * value.bottomLeft;
-		br = maxW * value.bottomRight;
+		tl = basePx * value.topLeft;
+		tr = basePx * value.topRight;
+		bl = basePx * value.bottomLeft;
+		br = basePx * value.bottomRight;
 	} else {
-		tl = tr = bl = br = maxW * value;
+		tl = tr = bl = br = basePx * value;
 	}
 	return {
 		topLeft: tl,
@@ -5638,7 +5638,7 @@ _bezierInterpolation: _bezierInterpolation,
 toLineHeight: toLineHeight,
 toTRBL: toTRBL,
 toTRBLCorners: toTRBLCorners,
-percetnToPx: percetnToPx,
+percentageToPx: percentageToPx,
 toPadding: toPadding,
 toFont: toFont,
 resolve: resolve,
@@ -7068,6 +7068,7 @@ BarController.defaults = {
 		'borderSkipped',
 		'borderWidth',
 		'borderRadius',
+		'borderRadiusPercentage',
 		'barPercentage',
 		'barThickness',
 		'base',
@@ -8587,8 +8588,14 @@ function parseBorderWidth(bar, maxW, maxH) {
 }
 function parseBorderRadius(bar, maxW, maxH) {
 	const value = bar.options.borderRadius;
-  const o = percetnToPx(value, maxW);
+	const percentage = bar.options.borderRadiusPercentage;
 	const maxR = Math.min(maxW, maxH);
+	let o;
+	if (percentage) {
+		o = percentageToPx(percentage, maxR);
+	} else {
+		o = toTRBLCorners(value);
+	}
 	const skip = parseBorderSkipped(bar);
 	return {
 		topLeft: skipOrLimit(skip.top || skip.left, o.topLeft, 0, maxR),
@@ -8706,7 +8713,8 @@ BarElement.id = 'bar';
 BarElement.defaults = {
 	borderSkipped: 'start',
 	borderWidth: 0,
-	borderRadius: 0
+	borderRadius: 0,
+	borderRadiusPercentage: 0,
 };
 BarElement.defaultRoutes = {
 	backgroundColor: 'backgroundColor',

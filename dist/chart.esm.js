@@ -4,7 +4,7 @@
  * (c) 2021 Chart.js Contributors
  * Released under the MIT License
  */
-import { r as requestAnimFrame, a as resolve, e as effects, c as color, i as isObject, d as defaults, n as noop, v as valueOrDefault, u as unlistenArrayEvents, l as listenArrayEvents, m as merge, b as isArray, f as resolveObjectKey, g as getHoverColor, _ as _capitalize, h as mergeIf, s as sign, j as _merger, k as isNullOrUndef, o as clipArea, p as unclipArea, q as _arrayUnique, t as toRadians, T as TAU, H as HALF_PI, P as PI, w as isNumber, x as _limitValue, y as _lookupByKey, z as getRelativePosition$1, A as _isPointInArea, B as _rlookupByKey, C as toPadding, D as each, E as getMaximumSize, F as _getParentNode, G as readUsedSize, I as throttled, J as supportsEventListenerOptions, K as log10, L as finiteOrDefault, M as isNumberFinite, N as callback, O as toDegrees, Q as _measureText, R as _int16Range, S as _alignPixel, U as renderText, V as toFont, W as _factorize, X as uid, Y as retinaScale, Z as clearCanvas, $ as _elementsEqual, a0 as getAngleFromPoint, a1 as _angleBetween, a2 as _updateBezierControlPoints, a3 as _computeSegments, a4 as _boundSegments, a5 as _steppedInterpolation, a6 as _bezierInterpolation, a7 as _pointInLine, a8 as _steppedLineTo, a9 as _bezierCurveTo, aa as drawPoint, ab as toTRBL, ac as percetnToPx, ad as _normalizeAngle, ae as _boundSegment, af as getRtlAdapter, ag as _alignStartEnd, ah as overrideTextDirection, ai as restoreTextDirection, aj as _toLeftRightCenter, ak as distanceBetweenPoints, al as toFontString, am as _setMinAndMaxByKey, an as _decimalPlaces, ao as almostEquals, ap as almostWhole, aq as _longestText, ar as _filterBetween, as as _lookup } from './chunks/helpers.segment.js';
+import { r as requestAnimFrame, a as resolve, e as effects, c as color, i as isObject, d as defaults, n as noop, v as valueOrDefault, u as unlistenArrayEvents, l as listenArrayEvents, m as merge, b as isArray, f as resolveObjectKey, g as getHoverColor, _ as _capitalize, h as mergeIf, s as sign, j as _merger, k as isNullOrUndef, o as clipArea, p as unclipArea, q as _arrayUnique, t as toRadians, T as TAU, H as HALF_PI, P as PI, w as isNumber, x as _limitValue, y as _lookupByKey, z as getRelativePosition$1, A as _isPointInArea, B as _rlookupByKey, C as toPadding, D as each, E as getMaximumSize, F as _getParentNode, G as readUsedSize, I as throttled, J as supportsEventListenerOptions, K as log10, L as finiteOrDefault, M as isNumberFinite, N as callback, O as toDegrees, Q as _measureText, R as _int16Range, S as _alignPixel, U as renderText, V as toFont, W as _factorize, X as uid, Y as retinaScale, Z as clearCanvas, $ as _elementsEqual, a0 as getAngleFromPoint, a1 as _angleBetween, a2 as _updateBezierControlPoints, a3 as _computeSegments, a4 as _boundSegments, a5 as _steppedInterpolation, a6 as _bezierInterpolation, a7 as _pointInLine, a8 as _steppedLineTo, a9 as _bezierCurveTo, aa as drawPoint, ab as toTRBL, ac as percentageToPx, ad as toTRBLCorners, ae as _normalizeAngle, af as _boundSegment, ag as getRtlAdapter, ah as _alignStartEnd, ai as overrideTextDirection, aj as restoreTextDirection, ak as _toLeftRightCenter, al as distanceBetweenPoints, am as toFontString, an as _setMinAndMaxByKey, ao as _decimalPlaces, ap as almostEquals, aq as almostWhole, ar as _longestText, as as _filterBetween, at as _lookup } from './chunks/helpers.segment.js';
 export { d as defaults } from './chunks/helpers.segment.js';
 
 function drawFPS(chart, count, date, lastDate) {
@@ -1548,6 +1548,7 @@ BarController.defaults = {
 		'borderSkipped',
 		'borderWidth',
 		'borderRadius',
+		'borderRadiusPercentage',
 		'barPercentage',
 		'barThickness',
 		'base',
@@ -6301,8 +6302,14 @@ function parseBorderWidth(bar, maxW, maxH) {
 }
 function parseBorderRadius(bar, maxW, maxH) {
 	const value = bar.options.borderRadius;
-  const o = percetnToPx(value, maxW);
+	const percentage = bar.options.borderRadiusPercentage;
 	const maxR = Math.min(maxW, maxH);
+	let o;
+	if (percentage) {
+		o = percentageToPx(percentage, maxR);
+	} else {
+		o = toTRBLCorners(value);
+	}
 	const skip = parseBorderSkipped(bar);
 	return {
 		topLeft: skipOrLimit(skip.top || skip.left, o.topLeft, 0, maxR),
@@ -6420,7 +6427,8 @@ BarElement.id = 'bar';
 BarElement.defaults = {
 	borderSkipped: 'start',
 	borderWidth: 0,
-	borderRadius: 0
+	borderRadius: 0,
+	borderRadiusPercentage: 0,
 };
 BarElement.defaultRoutes = {
 	backgroundColor: 'backgroundColor',
