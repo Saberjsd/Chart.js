@@ -68,23 +68,28 @@ module.exports = [
 	// ES6 builds
 	// dist/chart.esm.js
 	// helpers/*.js
-	{
-		input: inputESM,
-		plugins: [
-			json(),
-			resolve(),
-			cleanup({
-				sourcemap: true
-			})
-		],
-		output: {
-			dir: './',
-			chunkFileNames: 'dist/chunks/[name].js',
-			banner,
-			format: 'esm',
-			indent: false,
-		},
-	},
+	// {
+
+
+	// Don't use the Chart.js ESM build since it's not yet compatible with the current plugin implementation.
+
+	// 	input: inputESM,
+	// 	plugins: [
+	// 		json(),
+	// 		resolve(),
+	// 		cleanup({
+	// 			sourcemap: true
+	// 		})
+	// 	],
+	// 	output: {
+	// 		dir: './',
+	// 		chunkFileNames: 'dist/chunks/[name].js',
+	// 		banner,
+	// 		format: 'esm',
+	// 		indent: false,
+	// 	},
+	// },
+  
 	// ES6 Typings builds
 	// dist/chart.esm.d.ts
 	// helpers/*.d.ts
