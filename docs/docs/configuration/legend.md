@@ -6,7 +6,7 @@ The chart legend displays data about the datasets that are appearing on the char
 
 ## Configuration options
 
-The legend configuration is passed into the `options.plugins.legend` namespace. The global options for the chart legend is defined in `Chart.defaults.plugins.legend`.
+Namespace: `options.plugins.legend`, the global options for the chart legend is defined in `Chart.defaults.plugins.legend`.
 
 | Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
@@ -15,7 +15,7 @@ The legend configuration is passed into the `options.plugins.legend` namespace. 
 | `align` | `string` | `'center'` | Alignment of the legend. [more...](#align)
 | `maxHeight` | `number` | | Maximum height of the legend, in pixels
 | `maxWidth` | `number` | | Maximum width of the legend, in pixels
-| `fullWidth` | `boolean` | `true` | Marks that this box should take the full width of the canvas (pushing down other boxes). This is unlikely to need to be changed in day-to-day use.
+| `fullSize` | `boolean` | `true` | Marks that this box should take the full width/height of the canvas (moving other boxes). This is unlikely to need to be changed in day-to-day use.
 | `onClick` | `function` | | A callback that is called when a click event is registered on a label item. Arguments: `[event, legendItem, legend]`.
 | `onHover` | `function` | | A callback that is called when a 'mousemove' event is registered on top of a label item. Arguments: `[event, legendItem, legend]`.
 | `onLeave` | `function` | | A callback that is called when a 'mousemove' event is registered outside of a previously hovered label item. Arguments: `[event, legendItem, legend]`.
@@ -33,6 +33,9 @@ Position of the legend. Options are:
 * `'left'`
 * `'bottom'`
 * `'right'`
+* `'chartArea'`
+
+When using the `'chartArea'` option the legend position is at the moment not configurable, it will always be on the left side of the chart in the middle.
 
 ## Align
 
@@ -46,7 +49,7 @@ Defaults to `'center'` for unrecognized values.
 
 ## Legend Label Configuration
 
-The legend label configuration is nested below the legend configuration using the `labels` key.
+Namespace: `options.plugins.legend.labels`
 
 | Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
@@ -63,7 +66,7 @@ The legend label configuration is nested below the legend configuration using th
 
 ## Legend Title Configuration
 
-The legend title configuration is nested below the legend configuration using the `title` key.
+Namespace: `options.plugins.legend.title`
 
 | Name | Type | Default | Description
 | ---- | ---- | ------- | -----------

@@ -1,6 +1,6 @@
 import { ChartArea } from './geometric';
 
-export type LayoutPosition = 'left' | 'top' | 'right' | 'bottom' | 'chartArea';
+export type LayoutPosition = 'left' | 'top' | 'right' | 'bottom' | 'center' | 'chartArea' | {[scaleId: string]: number};
 
 export interface LayoutItem {
 	/**
@@ -14,7 +14,7 @@ export interface LayoutItem {
 	/**
 	 * if true, and the item is horizontal, then push vertical boxes down
 	 */
-	fullWidth: boolean;
+	fullSize: boolean;
 	/**
 	 * Width of item. Must be valid after update()
 	 */
