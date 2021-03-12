@@ -93,17 +93,17 @@ module.exports = [
 	// ES6 Typings builds
 	// dist/chart.esm.d.ts
 	// helpers/*.d.ts
-	{
-		input: inputESMTypings,
-		plugins: [
-			dts()
-		],
-		output: {
-			dir: './',
-			chunkFileNames: 'dist/chunks/[name].ts',
-			banner,
-			format: 'esm',
-			indent: false,
-		},
-	}
+	// {
+	// 	input: inputESMTypings,
+	// 	plugins: [
+	// 		dts()
+	// 	],
+	// 	output: {
+	// 		dir: './',
+	// 		chunkFileNames: 'dist/chunks/[name].ts',
+	// 		banner,
+	// 		format: 'esm',
+	// 		indent: false,
+	// 	},
+	// }
 ];
